@@ -18,10 +18,8 @@ def rgbToBinary(triplet):
 	return r+g+b
 
 def rgbToHex(triplet):
-	r = hexdec[norm(triplet[0], r_bits)]
-	g = hexdec[norm(triplet[1], g_bits)]
-	b = hexdec[norm(triplet[2], b_bits)]
-	return r+g+b
+	binary = rgbToBinary(triplet)
+	return hex(int(binary, 2))
 
 
 filename = "square.jpg"
