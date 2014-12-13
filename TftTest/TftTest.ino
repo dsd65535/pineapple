@@ -26,7 +26,15 @@
 #define ST7735_GMCTRP1 0xE0
 #define ST7735_GMCTRN1 0xE1
 
-boolean hwSPI=0;
+#define MADCTL_MY  0x80
+#define MADCTL_MX  0x40
+#define MADCTL_MV  0x20
+#define MADCTL_ML  0x10
+#define MADCTL_RGB 0x00
+#define MADCTL_BGR 0x08
+#define MADCTL_MH  0x04
+
+boolean hwSPI=1;
 
 static const uint8_t PROGMEM
   Rcmd1[] = {                 // Init for 7735R, part 1 (red or green tab)
@@ -152,6 +160,9 @@ void fillRect(int16_t x,int16_t y,int16_t w,int16_t h,uint16_t color) {
   writedata(0x00);
   writedata(y+h-1);     // YEND
   writecommand(ST7735_RAMWR); // write to RAM
+  writedata(MADCTL_MY | MADCTL_MV | MADCTL_RGB);
+  _width = ST7735_TFTHEIGHT_18;
+  _height = ST7735_TFTWIDTH;
   uint8_t hi = color >> 8, lo = color;
   digitalWrite(8,HIGH);
   digitalWrite(10,LOW);
