@@ -32,3 +32,6 @@
 *.bak
 modelsim
 work/*
+
+# Temporary files
+*.swp

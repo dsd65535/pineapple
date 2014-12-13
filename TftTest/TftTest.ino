@@ -26,7 +26,7 @@
 #define ST7735_GMCTRP1 0xE0
 #define ST7735_GMCTRN1 0xE1
 
-boolean hwSPI=0;
+boolean hwSPI=1;
 
 static const uint8_t PROGMEM
   Rcmd1[] = {                 // Init for 7735R, part 1 (red or green tab)
