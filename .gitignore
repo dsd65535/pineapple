@@ -26,3 +26,9 @@
 *.exe
 *.out
 *.app
+
+# Modelsim BS
+*.wlf
+*.bak
+modelsim
+work/*
