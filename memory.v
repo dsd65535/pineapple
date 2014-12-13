@@ -8,7 +8,7 @@ output[15:0] dataOut;
 reg [15:0] mem[20479:0];
 always @(posedge clk)
 	if (writeEnable) mem[addr] <= dataIn;
-initial $readmemb("memb.dat", mem);
+initial $readmemh("memh.dat", mem);
 
 assign DataOut = mem[addr];
 

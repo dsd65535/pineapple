@@ -35,3 +35,4 @@ work/*
 
 # Temporary files
 *.swp
+*.ini
