@@ -10246,7 +10246,7 @@ static const uint8_t PROGMEM kat1[] = {
 0x6bae,
 0x5b2b,
 0x4a89,
-0x3a07}
+0x3a07};
 
 static const uint8_t PROGMEM kat2[] = {
 0x52aa,
@@ -20633,7 +20633,8 @@ void drawPic() {
   int color=0;
   for(y=160; y>0; y--) {
     for(x=128; x>0; x--) {
-      color=kat[i];
+      if (i<10240) color=kat1[i];
+      else color=kat2[i-10240];
       Serial.print(x);
       Serial.print(' ');
       Serial.print(y);
