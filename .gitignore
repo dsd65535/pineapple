@@ -32,3 +32,4 @@
 *.bak
 modelsim
 work/*
+*.ini
