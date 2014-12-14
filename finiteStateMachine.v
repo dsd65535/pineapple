@@ -1,7 +1,7 @@
 `include "serialClock.v"
 
-module finiteStateMachine(clk, sclkEdge, instr, cs, dc, pcEn, parallelData);
-input clk, sclkEdge;
+module finiteStateMachine(clk, sclkPosEdge, instr, cs, dc, pcEn, parallelData);
+input clk, sclkPosEdge;
 input[9:0] instr;
 output reg cs, dc, pcEn;
 output[7:0] parallelData;
@@ -17,10 +17,7 @@ assign parallelData = instr[7:0]; // what goes to the shift register
 
 //states: write data, write command, delay
 always @(posedge clk) begin
-	if (sclkEdge == 1) begin
-                $display("%b", instr);
-		$display("%b", code);
-                $display("%b", parallelData);
+	if (sclkPosEdge == 1) begin
 		if (delayCount == 0) begin
 			if (code == 2'b00) begin // write data
 				$display("writing data");
@@ -56,11 +53,11 @@ endmodule
 module testStateMachine;
 reg clk;
 reg[9:0] instr;
-wire cs, dc, pcEn, sclk, sclkEdge;
+wire cs, dc, pcEn, sclk, sclkPosEdge, sclkNegEdge;
 wire[7:0] parallelData;
 
-serialClock sc(clk, sclk, sclkEdge);
-finiteStateMachine fsm(clk, sclkEdge, instr, cs, dc, pcEn, parallelData);
+serialClock sc(clk, sclk, sclkPosEdge, sclkNegEdge);
+finiteStateMachine fsm(clk, sclkPosEdge, instr, cs, dc, pcEn, parallelData);
 
 initial clk = 0;
 always #5 clk=!clk;

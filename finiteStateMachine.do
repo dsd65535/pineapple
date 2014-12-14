@@ -3,7 +3,7 @@ vsim -voptargs="+acc" testStateMachine
 
 add wave -position insertpoint \
 sim:/testStateMachine/clk \
-sim:/testStateMachine/sclkEdge \
+sim:/testStateMachine/sclkPosEdge \
 sim:/testStateMachine/cs \
 sim:/testStateMachine/dc \
 sim:/testStateMachine/pcEn \
