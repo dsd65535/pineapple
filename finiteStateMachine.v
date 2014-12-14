@@ -1,31 +1,78 @@
-module finiteStateMachine(clk, sclkEdge, instr, cs, dc, pcEn);
+`include "serialClock.v"
+
+module finiteStateMachine(clk, sclkEdge, instr, cs, dc, pcEn, parallelData);
 input clk, sclkEdge;
-input[17:0] instr;
-output reg cs, dc pcEn;
+input[9:0] instr;
+output reg cs, dc, pcEn;
+output[7:0] parallelData;
+wire[1:0] code;
 
-reg[1:0] currentState = 0;
+parameter delayCycles = 20;
+parameter maxDelay = 2**delayCycles;
 
-//states: write data, write command, idle
+reg[delayCycles-1:0] delayCount = 0;
 
+assign code = instr[9:8]; // our makeshift opcodes
+assign parallelData = instr[7:0]; // what goes to the shift register
+
+//states: write data, write command, delay
 always @(posedge clk) begin
-	if 
-	case(currentState) 
-		0 : begin // write command
-			misoEn = 1;
-			dc = 1;
-			cs = 0;
-			
+	if (sclkEdge == 1) begin
+                $display("%b", instr);
+		$display("%b", code);
+                $display("%b", parallelData);
+		if (delayCount == 0) begin
+			if (code == 2'b00) begin // write data
+				$display("writing data");
+				cs = 0;
+				dc = 1; // data is high
+				pcEn = 1;
+			end
+			if (code == 2'b01) begin  // write command
+				$display("writing command");
+				cs = 0;
+				dc = 0; // command is low
+				pcEn = 1;
+			end
+			if (code == 2'b10) begin // delay
+				$display("beginning delay");
+				cs = 1;
+				pcEn = 0;
+				// do we care about dc??
+				delayCount = delayCount + 1;
+			end
+		end else begin
+			$display("%d", delayCount);
+			if (delayCount == maxDelay) begin
+				delayCount = 0;
+			end else begin
+				delayCount = delayCount + 1;
+			end
 		end
-		1 : begin // write data
-			misoEn = 1;
-			dc = 0;
-			cs = 0;
-		end 
-		2 : begin // delay
-			misoEn = 0;
-			dc = 1; // but we don't actually care
-			cs = 1;
-		end
-	endcase
+	end
 end
 endmodule
+
+module testStateMachine;
+reg clk;
+reg[9:0] instr;
+wire cs, dc, pcEn, sclk, sclkEdge;
+wire[7:0] parallelData;
+
+serialClock sc(clk, sclk, sclkEdge);
+finiteStateMachine fsm(clk, sclkEdge, instr, cs, dc, pcEn, parallelData);
+
+initial clk = 0;
+always #5 clk=!clk;
+
+initial begin
+instr = 10'b0010101010;
+#600
+instr = 10'b0100110011;
+#600
+instr = 10'b1010110110;
+#600
+instr = 10'b0010101010;
+end
+endmodule
+

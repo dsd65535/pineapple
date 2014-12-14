@@ -2,7 +2,7 @@ module serialClock(clk, sclk, sclkEdge);
 input clk;
 output reg sclk, sclkEdge;
 
-parameter bits = 2;
+parameter bits = 5;
 parameter counttime = 2**bits-1;
 reg[bits-1:0] count;
 
