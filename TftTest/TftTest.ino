@@ -160,9 +160,9 @@ void fillRect(int16_t x,int16_t y,int16_t w,int16_t h,uint16_t color) {
   writedata(0x00);
   writedata(y+h-1);     // YEND
   writecommand(ST7735_RAMWR); // write to RAM
-  writedata(MADCTL_MY | MADCTL_MV | MADCTL_RGB);
-  _width = ST7735_TFTHEIGHT_18;
-  _height = ST7735_TFTWIDTH;
+  //writedata(MADCTL_MY | MADCTL_MV | MADCTL_RGB);
+  //_width = ST7735_TFTHEIGHT_18;
+  //_height = ST7735_TFTWIDTH;
   uint8_t hi = color >> 8, lo = color;
   digitalWrite(8,HIGH);
   digitalWrite(10,LOW);
