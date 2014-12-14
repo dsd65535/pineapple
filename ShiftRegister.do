@@ -1,4 +1,4 @@
-vlog -reportprogress 300 -work work shiftregister.v
+vlog -reportprogress 300 -work work ShiftRegister.v
 vsim -voptargs="+acc" testShiftRegister
 
 add wave -position insertpoint \
