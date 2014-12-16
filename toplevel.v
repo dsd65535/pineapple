@@ -27,6 +27,7 @@ wire[memBits-1:0] dataIn, dataOut;
 
 // programCounter
 wire[memAddrWidth-1:0] memAddr;
+wire next;
 assign addr = memAddr;
 
 // shiftRegister
@@ -34,6 +35,8 @@ wire parallelLoad, serialDataIn; //not used
 wire[dataBits-1:0] parallelDataOut; // also not used
 wire[dataBits-1:0] parallelDataIn;
 wire serialDataOut;
+assign parallelLoad = next;
+assign parallelDataIn = dataOut;
 
 // finiteStateMachine
 wire[memBits-1:0] instr; // probably change this to reflect envelope diagram
@@ -55,7 +58,7 @@ assign led = parallelDataOut[7:0];
 // Magic
 serialClock #(2) sc(clk, sclk, sclkPosEdge, sclkNegEdge);
 memory m(clk, writeEnable, addr, dataIn, dataOut);
-programCounter pc(clk, sclkPosEdge, pcEn, memAddr);
+programCounter pc(clk, sclkPosEdge, pcEn, memAddr, next);
 shiftRegister sr(clk, sclkNegEdge, parallelLoad, parallelDataIn, serialDataIn, parallelDataOut, serialDataOut);
 finiteStateMachine fsm(clk, sclkPosEdge, instr, cs, dc, pcEn, parallelData);
 mosiFF mff(clk, sclkNegEdge, d, q);

@@ -61,8 +61,16 @@ serialDataIn=0; #200
 serialDataIn=1; #200
 serialDataIn=0; #200
 serialDataIn=1; #200
-serialDataIn=0; 
-
+serialDataIn=0; #200
+serialDataIn=1;
+parallelLoad=1; #20
+parallelLoad=0; #180
+serialDataIn=0; #200
+serialDataIn=1; #200
+serialDataIn=0; #200
+serialDataIn=1; #200
+serialDataIn=0; #200
+serialDataIn=1;
 
 
 //parallelLoad=0;

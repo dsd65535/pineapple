@@ -11,7 +11,7 @@ input[width-1:0] dataIn;
 output[width-1:0] dataOut;
 
 reg [width-1:0] mem[depth-1:0];
-always @(posedge clk) begin
+always @(*) begin
 	if (writeEnable) begin
 		mem[addr] <= dataIn;
 	end
