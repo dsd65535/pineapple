@@ -2,7 +2,7 @@ module delayCounter(clk, delayEn, pcEn);
 input clk, delayEn;
 output reg pcEn;
 
-parameter delayCycles = 3;
+parameter delayCycles = 4;
 parameter maxDelay = 2**delayCycles-1;
 
 reg[delayCycles-1:0] delayCount;
