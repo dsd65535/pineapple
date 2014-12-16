@@ -13,14 +13,11 @@ reg[width-1:0]      shiftRegisterMem;
 assign serialDataOut=shiftRegisterMem[0];
 assign parallelDataOut=shiftRegisterMem;
 
-always @(posedge clk) begin
-    if (parallelLoad==1) begin
-	shiftRegisterMem = parallelDataIn;
-    end else begin
-	if (peripheralClkEdge==1) begin
+always @(posedge peripheralClkEdge) begin
 	shiftRegisterMem = {serialDataIn,shiftRegisterMem[width-1:1]};
+	if (parallelLoad==1) begin
+		shiftRegisterMem = parallelDataIn;
 	end
-    end
 end
 endmodule
 
