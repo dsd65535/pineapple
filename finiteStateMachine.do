@@ -6,7 +6,7 @@ sim:/testStateMachine/clk \
 sim:/testStateMachine/sclkPosEdge \
 sim:/testStateMachine/cs \
 sim:/testStateMachine/dc \
-sim:/testStateMachine/pcEn \
+sim:/testStateMachine/delayEn \
 sim:/testStateMachine/parallelData 
 
 run 5000

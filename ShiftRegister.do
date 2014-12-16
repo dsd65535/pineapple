@@ -8,7 +8,7 @@ sim:/testShiftRegister/parallelLoad \
 sim:/testShiftRegister/parallelDataIn \
 sim:/testShiftRegister/serialDataIn \
 sim:/testShiftRegister/parallelDataOut \
-sim:/testShiftRegister/serialDataOut
+sim:/testShiftRegister/serialDataOut 
 
 run 2000
 wave zoom full

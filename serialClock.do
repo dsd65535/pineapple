@@ -5,7 +5,8 @@ add wave -position insertpoint \
 sim:/testSclk/clk \
 sim:/testSclk/sclk \
 sim:/testSclk/sclkPosEdge \
+sim:/testSclk/sclk8PosEdge \
 sim:/testSclk/sclkNegEdge
 
-run 2000
+run 20000
 wave zoom full

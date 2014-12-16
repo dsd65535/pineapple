@@ -5,9 +5,6 @@ r_bits = 5
 g_bits = 6
 b_bits = 5
 
-numerals = "0123456789abcdef"
-hexdec  = {int(v, 16): v for v in (x+y for x in numerals for y in numerals)}
-
 def norm(num, bits):
 	return math.trunc(num*(2**bits/256.0))
 

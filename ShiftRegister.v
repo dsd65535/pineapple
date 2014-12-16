@@ -1,5 +1,5 @@
 module shiftRegister(clk, peripheralClkEdge, parallelLoad, parallelDataIn, serialDataIn, parallelDataOut, serialDataOut);
-parameter width = 16;
+parameter width = 8;
 input               clk;
 input               peripheralClkEdge;
 input               parallelLoad;
@@ -10,32 +10,30 @@ input               serialDataIn;
 
 reg[width-1:0]      shiftRegisterMem;
 
-assign serialDataOut=shiftRegisterMem[0];
+assign serialDataOut=shiftRegisterMem[width-1];
 assign parallelDataOut=shiftRegisterMem;
 
-always @(posedge clk) begin
-    if (parallelLoad==1) begin
-	shiftRegisterMem = parallelDataIn;
-    end else begin
-	if (peripheralClkEdge==1) begin
-	shiftRegisterMem = {serialDataIn,shiftRegisterMem[width-1:1]};
+always @(posedge peripheralClkEdge) begin
+	shiftRegisterMem = {shiftRegisterMem[width-2:0],serialDataIn};
+	if (parallelLoad==1) begin
+		shiftRegisterMem = parallelDataIn;
 	end
-    end
 end
 endmodule
 
 module testShiftRegister;
+parameter width = 8;
 reg             clk;
 reg             peripheralClkEdge;
 reg             parallelLoad;
-wire[15:0]       parallelDataOut;
+wire[width-1:0] parallelDataOut;
 wire            serialDataOut;
-reg[15:0]        parallelDataIn;
+reg[width-1:0]  parallelDataIn;
 reg             serialDataIn; 
 
 reg [4:0] sclk_temp;
 
-shiftregister #(16) sr(clk, peripheralClkEdge, parallelLoad, parallelDataIn, serialDataIn, parallelDataOut, serialDataOut);
+shiftregister #(width) sr(clk, peripheralClkEdge, parallelLoad, parallelDataIn, serialDataIn, parallelDataOut, serialDataOut);
 
 initial begin clk=0; sclk_temp=0; end
 always #10 clk=!clk;
@@ -60,8 +58,16 @@ serialDataIn=0; #200
 serialDataIn=1; #200
 serialDataIn=0; #200
 serialDataIn=1; #200
-serialDataIn=0; 
-
+serialDataIn=0; #200
+serialDataIn=1;
+parallelLoad=1; #20
+parallelLoad=0; #180
+serialDataIn=0; #200
+serialDataIn=1; #200
+serialDataIn=0; #200
+serialDataIn=1; #200
+serialDataIn=0; #200
+serialDataIn=1;
 
 
 //parallelLoad=0;
