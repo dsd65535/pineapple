@@ -1,0 +1,8 @@
+MO shiftRegister NULL ../shiftRegister.v vlg07/shift_register.bin 1418711239
+MO finiteStateMachine NULL ../finiteStateMachine.v vlg4D/finite_state_machine.bin 1418711239
+MO toplevel NULL ../toplevel.v vlg63/toplevel.bin 1418711240
+MO memory NULL ../memory.v vlg69/memory.bin 1418711239
+MO serialClock NULL ../serialClock.v vlg20/serial_clock.bin 1418711240
+MO mosiFF NULL ../mosiFF.v vlg1C/mosi_f_f.bin 1418711240
+MO delayCounter NULL ../delayCounter.v vlg23/delay_counter.bin 1418711240
+MO programCounter NULL ../programCounter.v vlg18/program_counter.bin 1418711240
