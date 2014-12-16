@@ -12,11 +12,67 @@ input clk;
 input[7:0] sw;
 input[3:0] btn;
 
-// right now these are just the module definitions copied and pasted
-memory(clk, writeEnable, addr, dataIn, dataOut);
-shiftRegister(clk, sclkNegEdge, parallelLoad, parallelDataIn, serialDataIn, parallelDataOut, serialDataOut);
-finiteStateMachine(clk, sclkPosEdge, instr, cs, dc, pcEn, parallelData);
-serialClock(clk, sclk, sclkPosEdge, sclkNegEdge);
-mosiFF(clk, sclkNegEdge, d, q);
+parameter memBits = 10;
+parameter memAddrWidth = 16;
+parameter dataBits = 8;
+
+// serialClock
+wire sclk, sclkPosEdge, sclkNegEdge;
+
+// memory
+wire writeEnable;
+wire[memAddrWidth-1:0] addr;
+wire[memBits-1:0] dataIn, dataOut;
+
+// programCounter
+wire[memAddrWidth-1:0] memAddr;
+assign memAddr = addr;
+
+// shiftRegister
+wire parallelLoad, serialDataIn; //not used
+wire[dataBits-1:0] parallelDataOut; // also not used
+wire[dataBits-1:0] parallelDataIn;
+wire serialDataOut;
+
+// finiteStateMachine
+wire[memBits-1:0] instr; // probably change this to reflect envelope diagram
+wire cs, dc, pcEn;
+wire[dataBits-1:0] parallelData;
+assign pcEn = writeEnable;
+assign instr = dataOut;
+
+// mosiFF
+wire d, q;
+assign d = serialDataOut;
+
+// OUTPUTS
+assign gpioBank1[0] = q; // mosi
+assign gpioBank1[1] = q; // mosi again because why not
+assign gpioBank1[2] = cs; // chip select
+assign gpioBank1[3] = dc; // data/command
+
+// Magic
+serialClock sc(clk, sclk, sclkPosEdge, sclkNegEdge);
+memory m(clk, writeEnable, addr, dataIn, dataOut);
+programCounter pc(clk, sclkPosEdge, pcEn, memAddr);
+shiftRegister sr(clk, sclkNegEdge, parallelLoad, parallelDataIn, serialDataIn, parallelDataOut, serialDataOut);
+finiteStateMachine fsm(clk, sclkPosEdge, instr, cs, dc, pcEn, parallelData);
+mosiFF mff(clk, sclkNegEdge, d, q);
 
 endmodule
+
+module testTopLevel;
+wire [7:0] led;
+wire [3:0] gpioBank1;
+reg[3:0] gpioBank2;
+reg clk;
+reg[7:0] sw;
+reg[3:0] btn;
+
+toplevel tl(led, gpioBank1, gpioBank2, clk, sw, btn);
+
+initial clk=0;
+always #10 clk=!clk;
+
+endmodule
+

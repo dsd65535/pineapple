@@ -56,7 +56,7 @@ reg[9:0] instr;
 wire cs, dc, pcEn, sclk, sclkPosEdge, sclkNegEdge;
 wire[7:0] parallelData;
 
-serialClock sc(clk, sclk, sclkPosEdge, sclkNegEdge);
+serialClock #(2) sc(clk, sclk, sclkPosEdge, sclkNegEdge);
 finiteStateMachine fsm(clk, sclkPosEdge, instr, cs, dc, pcEn, parallelData);
 
 initial clk = 0;
