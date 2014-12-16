@@ -19,7 +19,7 @@ def rgbToHex(triplet):
 	return hex(int(binary, 2))
 
 
-filename = "kitteh.jpg"
+filename = "neon.jpg"
 im = Image.open(filename)
 pixels = im.load()
 
@@ -29,6 +29,6 @@ with open("memb.dat", 'w') as f:
 			f.write(rgbToBinary(pixels[x, y])+"\n")
 
 with open("memh.dat", 'w') as f:
-	for x in range(0, im.size[0]):
-		for y in range(0, im.size[1]):
+	for y in range(0, im.size[0]):
+		for x in range(0, im.size[1]):
 			f.write(rgbToHex(pixels[x, y])+"\n")

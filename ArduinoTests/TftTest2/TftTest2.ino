@@ -94,7 +94,7 @@ Rcmd[] = {0x101,
 0x0C0,
 0x300
 },
-Scrn[] = {
+FullScrn[] = {
 0x12A,
 0x000,
 0x000,
@@ -108,14 +108,21 @@ Scrn[] = {
 0x12C,
 0x300
 },
-Cyan[] = {
+Stripes[] = {
 0x007,
 0x0FF,
-0x300
-},
-Magenta[] = {
 0x0F8,
 0x01F,
+0x300
+},
+Black[] = {
+0x000,
+0x000,
+0x300
+},
+White[] = {
+0x0FF,
+0x0FF,
 0x300
 };
 
@@ -136,16 +143,40 @@ void setup(void) {
   commandList(Rcmd);
 }
 
-int n;
 uint16_t i;
 uint16_t kiwi;
 boolean mango;
 
 void loop() {
-  commandList(Scrn);
-  for(n=0;n<128*160;n++) commandList(Cyan);
-  commandList(Scrn);
-  for(n=0;n<128*160;n++) commandList(Magenta);
+  int n;
+  int m;
+  int l;
+  int k;
+  commandList(FullScrn);
+  for(n=0;n<72*160;n++) commandList(Stripes);
+  commandList(FullScrn);
+  for(n=0;n<5;n++) {
+    for(m=0;m<16;m++) {
+      for(l=0;l<4;l++) {
+        for(k=0;k<16;k++) {
+          commandList(Black);
+        }
+        for(k=0;k<16;k++) {
+          commandList(White);
+        }
+      }
+    }
+    for(m=0;m<16;m++) {
+      for(l=0;l<4;l++) {
+        for(k=0;k<16;k++) {
+          commandList(White);
+        }
+        for(k=0;k<16;k++) {
+          commandList(Black);
+        }
+      }
+    }
+  }
 }
 
 void spiwrite(uint8_t c) {
