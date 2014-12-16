@@ -22,7 +22,7 @@ def rgbToHex(triplet):
 	return hex(int(binary, 2))
 
 
-filename = "square.jpg"
+filename = "kitteh.jpg"
 im = Image.open(filename)
 pixels = im.load()
 

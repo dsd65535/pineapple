@@ -26,7 +26,7 @@
 #define ST7735_GMCTRP1 0xE0
 #define ST7735_GMCTRN1 0xE1
 
-static const uint8_t PROGMEM kat1[] = {
+static const uint16_t PROGMEM kat1[] = {
 0x0,
 0x0,
 0x0,
