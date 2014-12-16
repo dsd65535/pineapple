@@ -3,9 +3,8 @@ vsim -voptargs="+acc" testTopLevel
 
 add wave -position insertpoint \
 sim:/testTopLevel/gpioBank1 \
-sim:/testTopLevel/gpioBank2 \
 sim:/testTopLevel/led \
 sim:/testTopLevel/clk 
 
-run 10000
+run 20480
 wave zoom full
