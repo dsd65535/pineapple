@@ -56,7 +56,7 @@ assign gpioBank1[3] = sclkPosEdge; // data/command
 assign led = parallelDataOut[7:0];
 
 // Magic
-serialClock #(2) sc(clk, sclk, sclkPosEdge, sclkNegEdge, sclk8PosEdge);
+serialClock #(3) sc(clk, sclk, sclkPosEdge, sclkNegEdge, sclk8PosEdge);
 memory m(clk, writeEnable, addr, dataIn, dataOut);
 programCounter pc(clk, sclkPosEdge, pcEn, memAddr, sclk8PosEdge);
 shiftRegister sr(clk, sclkPosEdge, parallelLoad, parallelDataIn, serialDataIn, parallelDataOut, serialDataOut);
