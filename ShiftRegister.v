@@ -10,11 +10,11 @@ input               serialDataIn;
 
 reg[width-1:0]      shiftRegisterMem;
 
-assign serialDataOut=shiftRegisterMem[0];
+assign serialDataOut=shiftRegisterMem[width-1];
 assign parallelDataOut=shiftRegisterMem;
 
 always @(posedge peripheralClkEdge) begin
-	shiftRegisterMem = {serialDataIn,shiftRegisterMem[width-1:1]};
+	shiftRegisterMem = {shiftRegisterMem[width-2:0],serialDataIn};
 	if (parallelLoad==1) begin
 		shiftRegisterMem = parallelDataIn;
 	end

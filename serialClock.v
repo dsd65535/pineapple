@@ -15,8 +15,8 @@ always @(posedge clk) begin
 	if (count == 0) begin
 		if (sclk == 0) begin
 			sclkPosEdge = 1;
-			count8=(count8+1)%8;
 			if (count8==0) sclk8PosEdge = 1;
+			count8=(count8+1)%8;
 		end else begin
 			sclkNegEdge = 1;
 		end

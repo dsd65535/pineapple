@@ -4,10 +4,9 @@ module mosiFF(clk, sclkNegEdge, d, q);
 input clk, sclkNegEdge, d;
 output reg q;
 
-always @(posedge clk) begin
-	if (sclkNegEdge == 1) begin
-		q <= d;
-	end
+always @(posedge sclkNegEdge) begin
+	q <= d;
+
 end
 endmodule
 
