@@ -16,8 +16,8 @@ always @(posedge clk) begin
 		mem[addr] <= dataIn;
 	end
 end
-//initial $readmemb("memb.dat", mem);
-initial $readmemh("memh.dat", mem);
+
+initial $readmemh("mem.dat", mem);
 
 assign dataOut = mem[addr];
 
@@ -39,7 +39,17 @@ always #10 clk=!clk;
 
 initial begin
 writeEnable=0;
+dataIn=0;
 addr = 0;
+$display("%d,%h",addr,dataOut); #20
+addr = 1;
+$display("%d,%h",addr,dataOut); #20
+addr = 2;
+$display("%d,%h",addr,dataOut); #20
+addr = 3;
+$display("%d,%h",addr,dataOut); #20
+addr = 4;
+$display("%d,%h",addr,dataOut);
 end
 
 endmodule
