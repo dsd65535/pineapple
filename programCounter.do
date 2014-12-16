@@ -6,5 +6,5 @@ sim:/testProgramCounter/clk \
 sim:/testProgramCounter/sclkPosEdge \
 sim:/testProgramCounter/memAddr
 
-run 2000
+run 15000
 wave zoom full
