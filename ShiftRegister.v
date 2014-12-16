@@ -1,5 +1,5 @@
 module shiftRegister(clk, peripheralClkEdge, parallelLoad, parallelDataIn, serialDataIn, parallelDataOut, serialDataOut);
-parameter width = 16;
+parameter width = 8;
 input               clk;
 input               peripheralClkEdge;
 input               parallelLoad;
@@ -28,14 +28,14 @@ module testShiftRegister;
 reg             clk;
 reg             peripheralClkEdge;
 reg             parallelLoad;
-wire[15:0]       parallelDataOut;
+wire[7:0]       parallelDataOut;
 wire            serialDataOut;
-reg[15:0]        parallelDataIn;
+reg[7:0]        parallelDataIn;
 reg             serialDataIn; 
 
 reg [4:0] sclk_temp;
 
-shiftregister #(16) sr(clk, peripheralClkEdge, parallelLoad, parallelDataIn, serialDataIn, parallelDataOut, serialDataOut);
+shiftRegister #(8) sr(clk, peripheralClkEdge, parallelLoad, parallelDataIn, serialDataIn, parallelDataOut, serialDataOut);
 
 initial begin clk=0; sclk_temp=0; end
 always #10 clk=!clk;
