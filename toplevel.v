@@ -1,6 +1,7 @@
 `include "ShiftRegister.v"
 `include "memory.v"
 `include "finiteStateMachine.v"
+`include "programCounter.v"
 `include "serialClock.v"
 `include "mosiFF.v"
 
@@ -26,7 +27,7 @@ wire[memBits-1:0] dataIn, dataOut;
 
 // programCounter
 wire[memAddrWidth-1:0] memAddr;
-assign memAddr = addr;
+assign addr = memAddr;
 
 // shiftRegister
 wire parallelLoad, serialDataIn; //not used
@@ -38,7 +39,6 @@ wire serialDataOut;
 wire[memBits-1:0] instr; // probably change this to reflect envelope diagram
 wire cs, dc, pcEn;
 wire[dataBits-1:0] parallelData;
-assign pcEn = writeEnable;
 assign instr = dataOut;
 
 // mosiFF
@@ -47,12 +47,13 @@ assign d = serialDataOut;
 
 // OUTPUTS
 assign gpioBank1[0] = q; // mosi
-assign gpioBank1[1] = q; // mosi again because why not
+assign gpioBank1[1] = sclkPosEdge; // mosi again because why not
 assign gpioBank1[2] = cs; // chip select
 assign gpioBank1[3] = dc; // data/command
+assign led = parallelDataOut[7:0];
 
 // Magic
-serialClock sc(clk, sclk, sclkPosEdge, sclkNegEdge);
+serialClock #(2) sc(clk, sclk, sclkPosEdge, sclkNegEdge);
 memory m(clk, writeEnable, addr, dataIn, dataOut);
 programCounter pc(clk, sclkPosEdge, pcEn, memAddr);
 shiftRegister sr(clk, sclkNegEdge, parallelLoad, parallelDataIn, serialDataIn, parallelDataOut, serialDataOut);

@@ -23,7 +23,6 @@ always @(posedge clk) begin
 			end
 		end else begin // if we're not done waiting, increment wait by 1
 			count <= count + 1;
-			$display(count);
 		end		
 	end
 end
