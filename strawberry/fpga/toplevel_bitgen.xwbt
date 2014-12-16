@@ -1,8 +1,8 @@
 INTSTYLE=ise
-INFILE=C:\CAProject\pineapple\strawberry\fpga\toplevel.ncd
-OUTFILE=C:\CAProject\pineapple\strawberry\fpga\toplevel.bit
+INFILE=C:\Users\ddimitrov\Documents\GitHub\pineapple\strawberry\fpga\toplevel.ncd
+OUTFILE=C:\Users\ddimitrov\Documents\GitHub\pineapple\strawberry\fpga\toplevel.bit
 FAMILY=Spartan3
 PART=xc3s1000-5ft256
-WORKINGDIR=C:\CAProject\pineapple\strawberry\fpga
+WORKINGDIR=C:\Users\ddimitrov\Documents\GitHub\pineapple\strawberry\fpga
 LICENSE=WebPack
-USER_INFO=210941624_0_0_359
+USER_INFO=_0_0_1381685376_010

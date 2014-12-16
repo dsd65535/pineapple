@@ -1,9 +1,9 @@
 --------------------------------------------------------------------------------
-Release 14.7 Trace  (nt64)
+Release 14.7 Trace  (nt)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise -v 3 -s 5
--n 3 -fastpaths -xml toplevel.twx toplevel.ncd -o toplevel.twr toplevel.pcf
+C:\Xilinx\14.7\ISE_DS\ISE\bin\nt\unwrapped\trce.exe -intstyle ise -v 3 -s 5 -n
+3 -fastpaths -xml toplevel.twx toplevel.ncd -o toplevel.twr toplevel.pcf
 
 Design file:              toplevel.ncd
 Physical constraint file: toplevel.pcf
@@ -56,14 +56,14 @@ clk            |    3.256|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Tue Dec 16 01:28:17 2014 
+Analysis completed Tue Dec 16 03:21:44 2014 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 153 MB
+Peak Memory Usage: 132 MB
 
 
 

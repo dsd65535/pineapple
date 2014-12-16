@@ -10,9 +10,9 @@ initial delayCount = 0;
 
 always @(posedge delayEn) begin
 //	delayCount = maxDelay;
-	pcEn=0;
-	#500
-	pcEn=1;
+//	pcEn=0;
+//	#500
+//	pcEn=1;
 end
 
 //always @(posedge clk) begin

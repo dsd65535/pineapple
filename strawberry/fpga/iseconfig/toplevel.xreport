@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2014-12-16T00:59:11</DateModified>
+  <DateModified>2014-12-16T03:24:37</DateModified>
   <ModuleName>toplevel</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>C:/CAProject/pineapple/strawberry/fpga/iseconfig/toplevel.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/CAProject/pineapple/strawberry/fpga</ImplementationReportsDirectory>
+  <SavedFilePath>C:/Users/ddimitrov/Documents/GitHub/pineapple/strawberry/fpga/iseconfig/toplevel.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/Users/ddimitrov/Documents/GitHub/pineapple/strawberry/fpga\</ImplementationReportsDirectory>
   <DateInitialized>2014-12-16T00:59:11</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

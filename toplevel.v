@@ -9,7 +9,7 @@
 module toplevel(led, gpioBank1, gpioBank2, clk, sw, btn); // possible inputs from fpga
 output [7:0] led;
 output [3:0] gpioBank1;
-input[3:0] gpioBank2;
+output [3:0] gpioBank2;
 input clk;
 input[7:0] sw;
 input[3:0] btn;
@@ -57,6 +57,7 @@ assign gpioBank1[0] = q; // mosi
 assign gpioBank1[1] = cs; // mosi again because why not
 assign gpioBank1[2] = dc; // chip select
 assign gpioBank1[3] = sclk; // data/command
+assign gpioBank2[0] = addr;
 assign led = parallelDataOut[7:0];
 
 // Magic
@@ -73,7 +74,7 @@ endmodule
 module testTopLevel;
 wire [7:0] led;
 wire [3:0] gpioBank1;
-reg[3:0] gpioBank2;
+wire[3:0] gpioBank2;
 reg clk;
 reg[7:0] sw;
 reg[3:0] btn;
