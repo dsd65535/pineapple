@@ -29,6 +29,7 @@ wire[memBits-1:0] dataIn, dataOut;
 
 // programCounter
 wire[memAddrWidth-1:0] memAddr;
+wire reset;
 assign addr = memAddr;
 
 // shiftRegister
@@ -45,28 +46,34 @@ wire cs, dc;
 wire[dataBits-1:0] parallelData;
 assign instr = dataOut;
 
-// mosiFF
-wire d, q;
-assign d = serialDataOut;
+// FFs
+wire md, mq;
+assign md = serialDataOut;
+wire cd, cq;
+assign cd = cs;
+wire dd, dq;
+assign dd = dc;
 
 // delayCounter
 wire delayEn, pcEn;
 
 // OUTPUTS
-assign gpioBank1[0] = q; // mosi
-assign gpioBank1[1] = cs; // mosi again because why not
-assign gpioBank1[2] = dc; // chip select
-assign gpioBank1[3] = sclk; // data/command
-assign gpioBank2[0] = addr;
+assign gpioBank1[0] = mq; // mosi
+assign gpioBank1[1] = cq; // chip select
+assign gpioBank1[2] = dq; // data/command select
+assign gpioBank1[3] = sclkPosEdge; // serialClock (positive edge)
 assign led = parallelDataOut[7:0];
+assign reset = btn[0];
 
 // Magic
 serialClock #(3) sc(clk, sclk, sclkPosEdge, sclkNegEdge, sclk8PosEdge);
 memory m(clk, writeEnable, addr, dataIn, dataOut);
-programCounter pc(clk, sclkPosEdge, pcEn, memAddr, sclk8PosEdge);
-shiftRegister sr(clk, sclkPosEdge, parallelLoad, parallelDataIn, serialDataIn, parallelDataOut, serialDataOut);
+programCounter pc(clk, sclkPosEdge, pcEn, memAddr, sclk8PosEdge, reset);
+shiftRegister sr(clk, sclkPosEdge, parallelLoad, parallelDataIn, serialDataIn, parallelDataOut, serialDataOut, sclk8PosEdge);
 finiteStateMachine fsm(clk, sclkPosEdge, instr, cs, dc, delayEn, parallelData);
-mosiFF mff(clk, sclkNegEdge, d, q);
+mosiFF mff(clk, sclkNegEdge, md, mq);
+mosiFF csff(clk, sclkNegEdge, cd, cq);
+mosiFF dcff(clk, sclkNegEdge, dd, dq);
 delayCounter delC(clk, delayEn, pcEn);
 
 endmodule
@@ -83,6 +90,11 @@ toplevel tl(led, gpioBank1, gpioBank2, clk, sw, btn);
 
 initial clk=0;
 always #10 clk=!clk;
+
+initial begin
+#14510 btn[0]=1;
+#10 btn[0]=0;
+end
 
 endmodule
 
