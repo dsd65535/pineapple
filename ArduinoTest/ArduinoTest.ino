@@ -120,9 +120,9 @@ Black[] = {
 0x000,
 0x300
 },
-White[] = {
-0x0FF,
-0x0FF,
+Pink[] = {
+0x0FB,
+0x056,
 0x300
 };
 
@@ -162,14 +162,14 @@ void loop() {
           commandList(Black);
         }
         for(k=0;k<16;k++) {
-          commandList(White);
+          commandList(Pink);
         }
       }
     }
     for(m=0;m<16;m++) {
       for(l=0;l<4;l++) {
         for(k=0;k<16;k++) {
-          commandList(White);
+          commandList(Pink);
         }
         for(k=0;k<16;k++) {
           commandList(Black);
