@@ -16,9 +16,8 @@ assign parallelDataOut=shiftRegisterMem;
 
 always @(posedge peripheralClkEdge) begin
 shiftRegisterMem <= {shiftRegisterMem[width-2:0],serialDataIn};
-end
-always @(negedge peripheralClk8Edge) begin
-		shiftRegisterMem <= parallelDataIn;
+#20
+if(parallelLoad) shiftRegisterMem <= parallelDataIn;
 end
 endmodule
 

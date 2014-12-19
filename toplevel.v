@@ -64,6 +64,7 @@ assign gpioBank1[2] = dq; // data/command select
 assign gpioBank1[3] = sclkPosEdge; // serialClock (positive edge)
 assign led = parallelDataOut[7:0];
 assign reset = btn[0];
+assign gpioBank2[0] = !btn[1];
 
 // Magic
 serialClock #(3) sc(clk, sclk, sclkPosEdge, sclkNegEdge, sclk8PosEdge);
@@ -91,10 +92,10 @@ toplevel tl(led, gpioBank1, gpioBank2, clk, sw, btn);
 initial clk=0;
 always #10 clk=!clk;
 
-initial begin
-#14510 btn[0]=1;
-#10 btn[0]=0;
-end
+//initial begin
+//#7850 btn[0]=1;
+//#10 btn[0]=0;
+//end
 
 endmodule
 

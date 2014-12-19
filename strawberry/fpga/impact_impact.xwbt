@@ -1,8 +1,0 @@
-INTSTYLE=impact
-INFILE=C:\Users\ddimitrov\Documents\GitHub\pineapple\strawberry\fpga\impact.xsl
-OUTFILE=C:\Users\ddimitrov\Documents\GitHub\pineapple\strawberry\fpga\impact.xsl
-FAMILY=None
-PART=None
-WORKINGDIR=C:\Users\ddimitrov\Documents\GitHub\pineapple\strawberry\fpga
-LICENSE=iMPACT
-USER_INFO=iMPACT
