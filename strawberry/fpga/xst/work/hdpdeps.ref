@@ -1,8 +1,0 @@
-V3 3
-FL C:/CAProject/pineapple/strawberry/blk_mem_gen_v7_3.vhd 2014/12/18.20:35:13 P.20131013
-EN work/blk_mem_gen_v7_3 1418958495 \
-      FL C:/CAProject/pineapple/strawberry/blk_mem_gen_v7_3.vhd \
-      PB ieee/std_logic_1164 1381692176
-AR work/blk_mem_gen_v7_3/blk_mem_gen_v7_3_a 1418958496 \
-      FL C:/CAProject/pineapple/strawberry/blk_mem_gen_v7_3.vhd \
-      EN work/blk_mem_gen_v7_3 1418958495

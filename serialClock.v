@@ -16,7 +16,7 @@ always @(posedge clk) begin
 		if (sclk == 0) begin
 			sclkPosEdge = 1;
 			if (count8==0) sclk8PosEdge = 1;
-			count8=(count8+1)%8;
+			count8=(count8+1);
 		end else begin
 			sclkNegEdge = 1;
 		end
@@ -26,7 +26,8 @@ always @(posedge clk) begin
 		sclkNegEdge = 0;
 		sclk8PosEdge = 0;
 	end
-	count = (count + 1) % counttime;
+	count = (count + 1);
+	if (count == counttime) count = 0;
 end
 
 endmodule

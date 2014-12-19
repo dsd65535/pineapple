@@ -1,2 +1,0 @@
-vhdl work "../blk_mem_gen_v7_3.vhd"
-verilog work "../toplevel.v"
