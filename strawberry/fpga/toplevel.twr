@@ -44,7 +44,8 @@ Clock clk to Pad
             | clk (edge) |                  | Clock  |
 Destination |   to PAD   |Internal Clock(s) | Phase  |
 ------------+------------+------------------+--------+
-gpioBank1<3>|   10.255(R)|clk_BUFGP         |   0.000|
+gpioBank1<3>|   10.802(R)|clk_BUFGP         |   0.000|
+led<4>      |    9.168(R)|clk_BUFGP         |   0.000|
 ------------+------------+------------------+--------+
 
 Clock to Setup on destination clock clk
@@ -52,18 +53,28 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |    3.256|         |         |         |
+clk            |    8.333|         |         |         |
 ---------------+---------+---------+---------+---------+
 
+Pad to Pad
+---------------+---------------+---------+
+Source Pad     |Destination Pad|  Delay  |
+---------------+---------------+---------+
+btn<1>         |gpioBank2<0>   |    8.314|
+btn<1>         |gpioBank2<1>   |    8.631|
+btn<1>         |gpioBank2<2>   |    9.558|
+btn<1>         |gpioBank2<3>   |    8.914|
+---------------+---------------+---------+
 
-Analysis completed Tue Dec 16 01:28:17 2014 
+
+Analysis completed Thu Dec 18 22:09:06 2014 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 153 MB
+Peak Memory Usage: 161 MB
 
 
 

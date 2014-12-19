@@ -1,8 +1,37 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Tue Dec 16 01:27:53 2014
+// Written by: Map P.20131013 on Thu Dec 18 22:08:54 2014
 //! **************************************************************************
 
 SCHEMATIC START;
+COMP "clk" LOCATE = SITE "A8" LEVEL 1;
+COMP "sw<0>" LOCATE = SITE "N15" LEVEL 1;
+COMP "sw<1>" LOCATE = SITE "J16" LEVEL 1;
+COMP "sw<2>" LOCATE = SITE "K16" LEVEL 1;
+COMP "sw<3>" LOCATE = SITE "K15" LEVEL 1;
+COMP "sw<4>" LOCATE = SITE "L15" LEVEL 1;
+COMP "sw<5>" LOCATE = SITE "M16" LEVEL 1;
+COMP "sw<6>" LOCATE = SITE "M15" LEVEL 1;
+COMP "sw<7>" LOCATE = SITE "N16" LEVEL 1;
+COMP "btn<0>" LOCATE = SITE "J13" LEVEL 1;
+COMP "led<0>" LOCATE = SITE "L14" LEVEL 1;
+COMP "led<1>" LOCATE = SITE "L13" LEVEL 1;
+COMP "btn<1>" LOCATE = SITE "K14" LEVEL 1;
+COMP "btn<2>" LOCATE = SITE "K13" LEVEL 1;
+COMP "led<2>" LOCATE = SITE "M14" LEVEL 1;
+COMP "btn<3>" LOCATE = SITE "K12" LEVEL 1;
+COMP "led<3>" LOCATE = SITE "L12" LEVEL 1;
+COMP "led<4>" LOCATE = SITE "N14" LEVEL 1;
+COMP "led<5>" LOCATE = SITE "M13" LEVEL 1;
+COMP "led<6>" LOCATE = SITE "P14" LEVEL 1;
+COMP "led<7>" LOCATE = SITE "R16" LEVEL 1;
+COMP "gpioBank1<0>" LOCATE = SITE "T14" LEVEL 1;
+COMP "gpioBank1<1>" LOCATE = SITE "R13" LEVEL 1;
+COMP "gpioBank1<2>" LOCATE = SITE "T13" LEVEL 1;
+COMP "gpioBank1<3>" LOCATE = SITE "R12" LEVEL 1;
+COMP "gpioBank2<0>" LOCATE = SITE "T12" LEVEL 1;
+COMP "gpioBank2<1>" LOCATE = SITE "R11" LEVEL 1;
+COMP "gpioBank2<2>" LOCATE = SITE "P8" LEVEL 1;
+COMP "gpioBank2<3>" LOCATE = SITE "T10" LEVEL 1;
 NET "clk_BUFGP/IBUFG" BEL "clk_BUFGP/BUFG.GCLKMUX" USELOCALCONNECT;
 SCHEMATIC END;
 
