@@ -3,6 +3,8 @@ import math
 import Tkinter, tkFileDialog
 from subprocess import call
 
+horizontal=True
+
 root = Tkinter.Tk()
 root.withdraw()
 
@@ -30,9 +32,14 @@ im = Image.open(filename)
 pixels = im.load()
 
 with open("mem.dat", 'w') as f:
-	for y in range(0, im.size[1]):
-		for x in range(0, im.size[0]):
-			f.write(rgbToHex(pixels[x, y])+"\n")
+    if horizontal:
+    	for x in range(0, im.size[0]):
+	    	for y in range(0, im.size[1]):
+		    	f.write(rgbToHex(pixels[x, y])+"\n")
+    else:
+    	for y in range(0, im.size[1]):
+	    	for x in range(0, im.size[0]):
+		    	f.write(rgbToHex(pixels[x, y])+"\n")
 
 f=open('mem.dat','r')
 g=open('mem.coe','w')
@@ -46,7 +53,7 @@ for line in f:
 f.close()
 g.close()
 
-call(["rm", "mem.dat"])
+#call(["rm", "mem.dat"])
 
 filename = tkFileDialog.askopenfilename()
 call(["mv", "mem.coe", filename])
