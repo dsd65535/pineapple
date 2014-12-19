@@ -1,0 +1,36 @@
+# PlanAhead Generated physical constraints 
+
+NET "led[0]" LOC = L14;
+NET "led[1]" LOC = L13;
+NET "led[2]" LOC = M14;
+NET "led[3]" LOC = L12;
+NET "led[4]" LOC = N14;
+NET "led[5]" LOC = M13;
+NET "led[6]" LOC = P14;
+NET "led[7]" LOC = R16;
+
+NET "clk" LOC = A8;
+
+NET "sw[0]" LOC = N15;
+NET "sw[1]" LOC = J16;
+NET "sw[2]" LOC = K16;
+NET "sw[3]" LOC = K15;
+NET "sw[4]" LOC = L15;
+NET "sw[5]" LOC = M16;
+NET "sw[6]" LOC = M15;
+NET "sw[7]" LOC = N16;
+
+NET "btn[0]" LOC = J13;
+NET "btn[1]" LOC = K14;
+NET "btn[2]" LOC = K13;
+NET "btn[3]" LOC = K12;
+
+NET "gpioBank1[0]" LOC = T14;
+NET "gpioBank1[1]" LOC = R13;
+NET "gpioBank1[2]" LOC = T13;
+NET "gpioBank1[3]" LOC = R12;
+
+NET "gpioBank2[0]" LOC = T12;
+NET "gpioBank2[1]" LOC = R11;
+NET "gpioBank2[2]" LOC = P8;
+NET "gpioBank2[3]" LOC = T10;

@@ -6,5 +6,5 @@ sim:/testTopLevel/gpioBank1 \
 sim:/testTopLevel/led \
 sim:/testTopLevel/clk 
 
-run 10000
+run 50000
 wave zoom full
